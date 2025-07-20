@@ -89,7 +89,7 @@ const Header = () => {
               onClick={() => {
                 // Resume download logic
                 const link = document.createElement('a');
-                link.href = '/Rehan AI Developer.pdf';
+                link.href = '/RehanAIDeveloper.pdf';
                 link.download = 'Rehan AI Developer.pdf';
                 link.click();
               }}
