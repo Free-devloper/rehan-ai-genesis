@@ -130,7 +130,7 @@ const Contact = () => {
                 size="lg"
                 onClick={() => {
                   const link = document.createElement('a');
-                  link.href = '/Rehan AI Developer.pdf';
+                  link.href = '/RehanAIDeveloper.pdf';
                   link.download = 'Rehan AI Developer.pdf';
                   link.click();
                 }}
