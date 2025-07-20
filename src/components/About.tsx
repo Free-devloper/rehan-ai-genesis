@@ -1,7 +1,11 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Code2, Database, Brain, Rocket } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const About = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation();
+  const { ref: highlightsRef, isVisible: highlightsVisible } = useScrollAnimation();
   const highlights = [
     {
       icon: <Code2 className="h-8 w-8 text-primary" />,
@@ -26,11 +30,11 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-muted/30">
+    <section id="about" className="py-24 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${titleVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
             </h2>
@@ -41,7 +45,7 @@ const About = () => {
           </div>
 
           {/* Main content */}
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div ref={contentRef} className={`grid md:grid-cols-2 gap-12 items-center mb-16 transition-all duration-1000 ${contentVisible ? 'animate-fade-in-left' : 'opacity-0 -translate-x-8'}`}>
             {/* Text content */}
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-foreground">
@@ -65,22 +69,26 @@ const About = () => {
               </div>
 
               {/* Key achievements */}
-              <div className="grid grid-cols-2 gap-4 pt-6">
-                <div className="text-center p-4 bg-card rounded-lg shadow-soft">
-                  <div className="text-2xl font-bold text-primary">10+</div>
+              <div className="grid grid-cols-2 gap-4 pt-6"
+                   style={{ animationDelay: '0.6s' }}>
+                <div className="text-center p-4 bg-card rounded-lg shadow-soft hover-lift">
+                  <div className="text-2xl font-bold text-primary animate-counter">10+</div>
                   <div className="text-sm text-muted-foreground">Production GenAI Apps</div>
                 </div>
-                <div className="text-center p-4 bg-card rounded-lg shadow-soft">
-                  <div className="text-2xl font-bold text-primary">5+</div>
+                <div className="text-center p-4 bg-card rounded-lg shadow-soft hover-lift">
+                  <div className="text-2xl font-bold text-primary animate-counter">5+</div>
                   <div className="text-sm text-muted-foreground">Years in AI/ML</div>
                 </div>
               </div>
             </div>
 
             {/* Highlights grid */}
-            <div className="grid gap-6">
+            <div ref={highlightsRef} className={`grid gap-6 transition-all duration-1000 ${highlightsVisible ? 'animate-fade-in-right' : 'opacity-0 translate-x-8'}`}>
               {highlights.map((highlight, index) => (
-                <Card key={index} className="group hover:shadow-glow transition-all duration-300 border-0 shadow-card">
+                <Card 
+                  key={index} 
+                  className="group hover:shadow-glow transition-all duration-300 border-0 shadow-card hover-lift"
+                  style={{ animationDelay: `${index * 0.1}s` }}>
                   <CardContent className="p-6 flex items-start space-x-4">
                     <div className="flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                       {highlight.icon}

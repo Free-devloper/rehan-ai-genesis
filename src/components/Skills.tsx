@@ -10,8 +10,12 @@ import {
   Cloud,
   Cpu
 } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Skills = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: skillsRef, isVisible: skillsVisible } = useScrollAnimation();
+  const { ref: specialRef, isVisible: specialVisible } = useScrollAnimation();
   const skillCategories = [
     {
       title: "Languages",
@@ -58,11 +62,11 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-background">
+    <section id="skills" className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${titleVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Technical <span className="bg-gradient-primary bg-clip-text text-transparent">Skills</span>
             </h2>
@@ -73,7 +77,7 @@ const Skills = () => {
           </div>
 
           {/* Skills grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div ref={skillsRef} className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 transition-all duration-1000 ${skillsVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             {skillCategories.map((category, index) => (
               <Card 
                 key={index} 
@@ -81,7 +85,7 @@ const Skills = () => {
               >
                 <CardHeader className="pb-4">
                   <CardTitle className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-lg ${category.gradient} text-white group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`p-2 rounded-lg ${category.gradient} text-white group-hover:scale-110 transition-transform duration-300 animate-pulse-glow`}>
                       {category.icon}
                     </div>
                     <span className="text-foreground">{category.title}</span>
@@ -105,9 +109,11 @@ const Skills = () => {
           </div>
 
           {/* Featured technologies */}
-          <div className="bg-gradient-neural rounded-2xl p-8 text-center text-white">
-            <div className="flex items-center justify-center mb-4">
-              <Cpu className="h-8 w-8 mr-3" />
+          <div ref={specialRef} className={`bg-gradient-neural rounded-2xl p-8 text-center text-white relative overflow-hidden transition-all duration-1000 ${specialVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
+            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+            <div className="relative z-10">
+              <div className="flex items-center justify-center mb-4">
+                <Cpu className="h-8 w-8 mr-3 animate-spin-slow" />
               <h3 className="text-2xl font-bold">AI/ML Specialization</h3>
             </div>
             <p className="text-gray-200 max-w-4xl mx-auto leading-relaxed mb-6">
@@ -123,8 +129,9 @@ const Skills = () => {
                   className="border-white/30 text-white hover:bg-white/20 transition-colors"
                 >
                   {specialty}
-                </Badge>
-              ))}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </div>
         </div>

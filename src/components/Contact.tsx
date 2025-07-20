@@ -1,8 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Linkedin, Github, MapPin, Clock, Download, Send, MessageCircle } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Contact = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: methodsRef, isVisible: methodsVisible } = useScrollAnimation();
+  const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation();
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
   const contactMethods = [
     {
       icon: <Mail className="h-6 w-6" />,
@@ -49,11 +54,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${titleVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Let's <span className="bg-gradient-primary bg-clip-text text-transparent">Connect</span>
             </h2>
@@ -64,15 +69,16 @@ const Contact = () => {
           </div>
 
           {/* Contact methods */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div ref={methodsRef} className={`grid md:grid-cols-3 gap-6 mb-12 transition-all duration-1000 ${methodsVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             {contactMethods.map((method, index) => (
               <Card 
                 key={index} 
-                className="group hover:shadow-glow transition-all duration-300 border-0 shadow-card cursor-pointer"
+                className="group hover:shadow-glow transition-all duration-300 border-0 shadow-card cursor-pointer hover-lift"
                 onClick={() => window.open(method.action, '_blank')}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className={`inline-flex p-3 rounded-full ${method.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`inline-flex p-3 rounded-full ${method.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow`}>
                     {method.icon}
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">{method.title}</h3>
@@ -84,11 +90,11 @@ const Contact = () => {
           </div>
 
           {/* Quick info */}
-          <div className="bg-muted/50 rounded-2xl p-8 mb-12">
+          <div ref={infoRef} className={`bg-muted/50 rounded-2xl p-8 mb-12 transition-all duration-1000 ${infoVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
             <h3 className="text-xl font-bold text-center mb-6">Quick Info</h3>
             <div className="grid md:grid-cols-3 gap-6">
               {availability.map((item, index) => (
-                <div key={index} className="flex items-center space-x-3 justify-center md:justify-start">
+                <div key={index} className="flex items-center space-x-3 justify-center md:justify-start hover-lift" style={{ animationDelay: `${index * 0.1}s` }}>
                   {item.icon}
                   <div>
                     <div className="text-sm font-medium text-foreground">{item.label}</div>
@@ -100,20 +106,22 @@ const Contact = () => {
           </div>
 
           {/* Call to action */}
-          <div className="text-center bg-gradient-neural rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Ready to Start Your AI Project?</h3>
-            <p className="text-gray-200 mb-6 max-w-2xl mx-auto">
-              Whether you need a full-stack AI application, want to integrate LLM capabilities 
-              into your existing system, or are exploring the possibilities of GenAI, 
-              I'm here to help bring your vision to life.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                variant="glass" 
-                size="lg"
-                onClick={() => window.open('mailto:rehanghafoor.official@gmail.com?subject=AI Project Inquiry', '_blank')}
-                className="group"
-              >
+          <div ref={ctaRef} className={`text-center bg-gradient-neural rounded-2xl p-8 text-white relative overflow-hidden transition-all duration-1000 ${ctaVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
+            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-4">Ready to Start Your AI Project?</h3>
+              <p className="text-gray-200 mb-6 max-w-2xl mx-auto">
+                Whether you need a full-stack AI application, want to integrate LLM capabilities 
+                into your existing system, or are exploring the possibilities of GenAI, 
+                I'm here to help bring your vision to life.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button 
+                  variant="glass" 
+                  size="lg"
+                  onClick={() => window.open('mailto:rehanghafoor.official@gmail.com?subject=AI Project Inquiry', '_blank')}
+                  className="group hover-lift"
+                >
                 <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 Send Me an Email
               </Button>
@@ -126,11 +134,12 @@ const Contact = () => {
                   link.download = 'Rehan AI Developer.pdf';
                   link.click();
                 }}
-                className="border-white/30 text-white hover:bg-white/20"
+                className="border-white/30 text-white hover:bg-white/20 hover-glow"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
               </Button>
+              </div>
             </div>
           </div>
         </div>
