@@ -110,6 +110,15 @@ const Hero = () => {
               Explore My Work
             </Button>
             <Button 
+              variant="accent" 
+              size="lg"
+              onClick={() => window.open('https://chat.roytechworkforce.com/', '_blank')}
+              className="group hover-glow"
+            >
+              <Brain className="mr-2 h-5 w-5 group-hover:pulse transition-all duration-300" />
+              Try Live Chatbot
+            </Button>
+            <Button 
               variant="glass" 
               size="lg"
               onClick={() => scrollToSection('contact')}
