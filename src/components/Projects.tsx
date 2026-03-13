@@ -304,17 +304,17 @@ const Projects = () => {
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-6">Ready to Build Something Amazing?</h3>
               <p className="text-gray-200 mb-8 max-w-3xl mx-auto text-lg leading-relaxed">
-                These 15 projects represent the breadth and depth of my AI engineering expertise. 
-                Many are proprietary or under NDA, but demonstrate real-world impact across industries. 
+                These 20 projects represent the breadth and depth of my Agentic AI & GenAI engineering expertise — spanning FinTech, HealthTech, Civil Engineering, and more.
+                Many are proprietary or under NDA, but demonstrate real-world autonomous agent systems at enterprise scale.
                 Let's discuss how I can bring this experience to your next breakthrough project.
               </p>
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">15+</div>
+                  <div className="text-3xl font-bold text-accent mb-2">20+</div>
                   <div className="text-sm text-gray-300">Production Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">8</div>
+                  <div className="text-3xl font-bold text-accent mb-2">10</div>
                   <div className="text-sm text-gray-300">Industry Verticals</div>
                 </div>
                 <div className="text-center">
