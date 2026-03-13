@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat } from 'lucide-react';
+import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat, Plug, CreditCard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Projects = () => {
