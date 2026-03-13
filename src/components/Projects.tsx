@@ -202,8 +202,8 @@ const Projects = () => {
               Professional <span className="bg-gradient-primary bg-clip-text text-transparent">Portfolio</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              15 production-ready GenAI applications across diverse industries. 
-              Each project demonstrates expertise in different aspects of AI development, from document processing to real-time analytics.
+              20 production-ready GenAI & Agentic AI applications across FinTech, HealthTech, Civil Engineering, and more.
+              Each project showcases autonomous multi-agent architectures, RAG pipelines, and enterprise-grade deployments.
             </p>
           </div>
 
