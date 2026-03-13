@@ -8,7 +8,9 @@ import {
   Wrench, 
   Database,
   Cloud,
-  Cpu
+  Cpu,
+  GitBranch,
+  Network
 } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -16,48 +18,49 @@ const Skills = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { ref: skillsRef, isVisible: skillsVisible } = useScrollAnimation();
   const { ref: specialRef, isVisible: specialVisible } = useScrollAnimation();
+
   const skillCategories = [
     {
-      title: "Languages",
-      icon: <Code className="h-6 w-6" />,
+      title: "Agentic AI & Frameworks",
+      icon: <Network className="h-6 w-6" />,
+      gradient: "bg-gradient-neural",
+      skills: ["LangChain", "LangGraph", "Agent Development Kits (ADKs)", "Multi-agent Orchestration", "Autonomous Workflow Design", "Agent Memory Management", "LlamaIndex"]
+    },
+    {
+      title: "Production ML & Deployment",
+      icon: <Cloud className="h-6 w-6" />,
       gradient: "bg-gradient-primary",
-      skills: ["Python", "JavaScript", "TypeScript", "SQL"]
+      skills: ["AWS SageMaker", "AWS Lambda", "ECS / ECR", "Docker", "Kubernetes", "CI/CD Pipelines", "Model Deployment", "MLOps", "API Development", "Microservices"]
+    },
+    {
+      title: "AI/ML Technologies",
+      icon: <Brain className="h-6 w-6" />,
+      gradient: "bg-gradient-accent",
+      skills: ["Deep Learning", "Computer Vision", "NLP", "PyTorch", "TensorFlow / Keras", "NLTK", "Scikit-Learn", "OpenAI", "Whisper", "Hugging Face", "LayoutLM", "Model Optimization"]
+    },
+    {
+      title: "Data Engineering",
+      icon: <Database className="h-6 w-6" />,
+      gradient: "bg-gradient-secondary",
+      skills: ["Python", "SQL", "MySQL", "ETL Pipelines", "Data Integrity Monitoring", "DBT", "Big Data Processing", "Feature Engineering", "PostgreSQL", "MongoDB", "Redis"]
+    },
+    {
+      title: "DevOps & Infrastructure",
+      icon: <Wrench className="h-6 w-6" />,
+      gradient: "bg-gradient-neural",
+      skills: ["Containerization", "CloudWatch", "Distributed Systems", "Event-Driven Architecture", "Production Debugging", "Scalability Optimization", "GitHub Actions", "FAISS", "ChromaDB"]
     },
     {
       title: "Frontend",
       icon: <Palette className="h-6 w-6" />,
       gradient: "bg-gradient-accent",
-      skills: ["React", "Tailwind CSS", "Next.js"]
+      skills: ["React", "Tailwind CSS", "Next.js", "TypeScript", "JavaScript"]
     },
     {
       title: "Backend",
       icon: <Server className="h-6 w-6" />,
-      gradient: "bg-gradient-secondary",
-      skills: ["FastAPI", "Node.js", "Django", "Express.js"]
-    },
-    {
-      title: "AI/ML",
-      icon: <Brain className="h-6 w-6" />,
-      gradient: "bg-gradient-neural",
-      skills: ["OpenAI", "Whisper", "Hugging Face", "LangChain", "LangGraph", "LayoutLM", "PyTorch"]
-    },
-    {
-      title: "Tools",
-      icon: <Wrench className="h-6 w-6" />,
       gradient: "bg-gradient-primary",
-      skills: ["Docker", "GitHub Actions", "Supabase", "Meilisearch", "FAISS", "ChromaDB"]
-    },
-    {
-      title: "Databases",
-      icon: <Database className="h-6 w-6" />,
-      gradient: "bg-gradient-accent",
-      skills: ["PostgreSQL", "MongoDB", "Redis"]
-    },
-    {
-      title: "Cloud",
-      icon: <Cloud className="h-6 w-6" />,
-      gradient: "bg-gradient-secondary",
-      skills: ["AWS", "GCP", "Coolify", "Vercel"]
+      skills: ["FastAPI", "Node.js", "Django", "Express.js", "Supabase", "Meilisearch"]
     }
   ];
 
@@ -71,8 +74,8 @@ const Skills = () => {
               Technical <span className="bg-gradient-primary bg-clip-text text-transparent">Skills</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A comprehensive toolkit for building modern AI applications - from frontend experiences 
-              to intelligent backend systems and production deployments.
+              A production-grade toolkit spanning agentic AI orchestration, MLOps, data engineering, 
+              and full-stack development — built for real-world deployment at scale.
             </p>
           </div>
 
@@ -82,6 +85,7 @@ const Skills = () => {
               <Card 
                 key={index} 
                 className="group hover:shadow-glow transition-all duration-300 border-0 shadow-card overflow-hidden"
+                style={{ animationDelay: `${index * 0.08}s` }}
               >
                 <CardHeader className="pb-4">
                   <CardTitle className="flex items-center space-x-3">
@@ -114,21 +118,21 @@ const Skills = () => {
             <div className="relative z-10">
               <div className="flex items-center justify-center mb-4">
                 <Cpu className="h-8 w-8 mr-3 animate-spin-slow" />
-              <h3 className="text-2xl font-bold">AI/ML Specialization</h3>
-            </div>
-            <p className="text-gray-200 max-w-4xl mx-auto leading-relaxed mb-6">
-              Deep expertise in modern AI frameworks and tools that power next-generation applications. 
-              From building RAG pipelines with LangChain to deploying voice-enabled systems with Whisper, 
-              I create intelligent solutions that solve real-world problems.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["RAG Pipelines", "LLM Fine-tuning", "Vector Databases", "Document AI", "Voice Processing", "Agentic Workflows"].map((specialty, index) => (
-                <Badge 
-                  key={index} 
-                  variant="outline" 
-                  className="border-white/30 text-white hover:bg-white/20 transition-colors"
-                >
-                  {specialty}
+                <h3 className="text-2xl font-bold">Agentic AI Specialization</h3>
+              </div>
+              <p className="text-gray-200 max-w-4xl mx-auto leading-relaxed mb-6">
+                Deep expertise in multi-agent orchestration, autonomous workflow design, and production-grade 
+                LLM deployment. From LangGraph agentic pipelines to MLOps on AWS SageMaker, I build intelligent 
+                systems that operate autonomously at enterprise scale across fintech, health, and engineering domains.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {["Multi-Agent Systems", "RAG Pipelines", "LLM Fine-tuning", "Vector Databases", "Document AI", "Voice Processing", "Agentic Workflows", "MLOps at Scale"].map((specialty, index) => (
+                  <Badge 
+                    key={index} 
+                    variant="outline" 
+                    className="border-white/30 text-white hover:bg-white/20 transition-colors"
+                  >
+                    {specialty}
                   </Badge>
                 ))}
               </div>

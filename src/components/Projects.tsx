@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen } from 'lucide-react';
+import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Projects = () => {
@@ -10,6 +10,51 @@ const Projects = () => {
   const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
 
   const projects = [
+    {
+      title: "Agentic FinTech Fraud Analyst",
+      description: "Built a LangGraph multi-agent system deployed on AWS Lambda that autonomously monitors real-time transaction streams, spawns investigative sub-agents for anomaly deep-dives, generates compliance reports, and auto-escalates high-risk cases — reducing false positives by 60% for a digital payments platform.",
+      icon: <TrendingUp className="h-8 w-8 text-emerald-400" />,
+      technologies: ["LangGraph", "LangChain", "AWS Lambda", "Kafka", "PostgreSQL", "Docker", "FastAPI"],
+      features: ["Multi-agent fraud investigation", "Real-time stream analysis", "Autonomous escalation logic", "Compliance report generation", "Agent memory across sessions"],
+      gradient: "bg-gradient-accent",
+      category: "FinTech · Agentic AI"
+    },
+    {
+      title: "Clinical Decision Support Agent",
+      description: "Developed an agentic clinical assistant using LangGraph + ADKs that autonomously retrieves patient records, cross-references medical literature via RAG, coordinates specialist sub-agents, and generates evidence-backed diagnosis briefs — deployed on AWS ECS with full HIPAA audit trails.",
+      icon: <HeartPulse className="h-8 w-8 text-rose-400" />,
+      technologies: ["LangGraph", "ADKs", "LlamaIndex", "OpenAI", "AWS ECS", "FAISS", "FastAPI", "PostgreSQL"],
+      features: ["Autonomous patient data retrieval", "Medical literature RAG", "Multi-specialist coordination", "Evidence-based diagnosis briefs", "HIPAA-compliant audit logs"],
+      gradient: "bg-gradient-neural",
+      category: "HealthTech · Agentic AI"
+    },
+    {
+      title: "Infrastructure Asset Management Agent",
+      description: "Engineered an autonomous AI agent for a civil engineering firm that inspects IoT sensor feeds from bridges and roads, orchestrates maintenance scheduling sub-agents, predicts structural failure windows using ML models on SageMaker, and generates engineer-ready remediation reports.",
+      icon: <HardHat className="h-8 w-8 text-amber-400" />,
+      technologies: ["LangGraph", "AWS SageMaker", "PyTorch", "IoT Streams", "Kubernetes", "DBT", "PostgreSQL"],
+      features: ["IoT sensor stream ingestion", "Predictive failure modeling", "Autonomous maintenance scheduling", "Structural risk scoring", "Engineer report generation"],
+      gradient: "bg-gradient-primary",
+      category: "Civil Engineering · Agentic AI"
+    },
+    {
+      title: "Agentic Portfolio Risk Orchestrator",
+      description: "Created a multi-agent financial risk platform using LangChain ADKs where specialized agents independently monitor equity, credit, and liquidity exposure, run Monte Carlo simulations, and collaboratively synthesize a unified risk dashboard — processing $2B+ in assets under management.",
+      icon: <Activity className="h-8 w-8 text-cyan-400" />,
+      technologies: ["LangChain", "ADKs", "Multi-agent Orchestration", "Python", "Kafka", "Redis", "AWS CloudWatch"],
+      features: ["Parallel risk agent coordination", "Monte Carlo simulation engine", "Liquidity & credit sub-agents", "Unified dashboard synthesis", "Event-driven alert pipeline"],
+      gradient: "bg-gradient-secondary",
+      category: "FinTech · Multi-Agent"
+    },
+    {
+      title: "Smart Hospital Operations Agent",
+      description: "Built an autonomous hospital workflow agent using LangGraph with persistent agent memory that manages bed allocation, staff scheduling, supply chain reordering, and patient flow optimization — integrating with EHR systems and reducing operational overhead by 35%.",
+      icon: <Building2 className="h-8 w-8 text-violet-400" />,
+      technologies: ["LangGraph", "Agent Memory Management", "LlamaIndex", "FastAPI", "Docker", "MySQL", "DBT"],
+      features: ["Persistent cross-session agent memory", "EHR system integration", "Autonomous bed & staff scheduling", "Supply chain reorder agents", "Patient flow optimization"],
+      gradient: "bg-gradient-accent",
+      category: "HealthTech · Autonomous Workflow"
+    },
     {
       title: "AI Legal Document Chatbot",
       description: "Built a RAG-based chatbot that answers questions from legal and policy PDFs using OpenAI + FAISS + LangChain. Enables lawyers and legal professionals to quickly extract insights from complex documents with 95% accuracy.",
@@ -157,8 +202,8 @@ const Projects = () => {
               Professional <span className="bg-gradient-primary bg-clip-text text-transparent">Portfolio</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-              15 production-ready GenAI applications across diverse industries. 
-              Each project demonstrates expertise in different aspects of AI development, from document processing to real-time analytics.
+              20 production-ready GenAI & Agentic AI applications across FinTech, HealthTech, Civil Engineering, and more.
+              Each project showcases autonomous multi-agent architectures, RAG pipelines, and enterprise-grade deployments.
             </p>
           </div>
 
@@ -259,17 +304,17 @@ const Projects = () => {
             <div className="relative z-10">
               <h3 className="text-3xl font-bold mb-6">Ready to Build Something Amazing?</h3>
               <p className="text-gray-200 mb-8 max-w-3xl mx-auto text-lg leading-relaxed">
-                These 15 projects represent the breadth and depth of my AI engineering expertise. 
-                Many are proprietary or under NDA, but demonstrate real-world impact across industries. 
+                These 20 projects represent the breadth and depth of my Agentic AI & GenAI engineering expertise — spanning FinTech, HealthTech, Civil Engineering, and more.
+                Many are proprietary or under NDA, but demonstrate real-world autonomous agent systems at enterprise scale.
                 Let's discuss how I can bring this experience to your next breakthrough project.
               </p>
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">15+</div>
+                  <div className="text-3xl font-bold text-accent mb-2">20+</div>
                   <div className="text-sm text-gray-300">Production Projects</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-accent mb-2">8</div>
+                  <div className="text-3xl font-bold text-accent mb-2">10</div>
                   <div className="text-sm text-gray-300">Industry Verticals</div>
                 </div>
                 <div className="text-center">
