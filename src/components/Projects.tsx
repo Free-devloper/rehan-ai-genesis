@@ -284,11 +284,23 @@ const Projects = () => {
 
                       {/* Action buttons */}
                       <div className="flex gap-3">
-                        <Button variant="outline" size="sm" className="opacity-70 hover:opacity-100 transition-opacity">
-                          <Github className="h-4 w-4 mr-2" />
-                          Private Repository
-                        </Button>
-                        <Button 
+                          {project.link ? (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="opacity-90 hover:opacity-100 transition-opacity border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                              onClick={() => window.open(project.link, '_blank')}
+                            >
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              Visit Live Site
+                            </Button>
+                          ) : (
+                            <Button variant="outline" size="sm" className="opacity-70 hover:opacity-100 transition-opacity">
+                              <Github className="h-4 w-4 mr-2" />
+                              Private Repository
+                            </Button>
+                          )}
+                          <Button
                           variant="outline" 
                           size="sm" 
                           className="opacity-70 hover:opacity-100 transition-opacity"
