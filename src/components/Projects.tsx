@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat } from 'lucide-react';
+import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat, Plug, CreditCard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Projects = () => {
@@ -11,13 +11,23 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "Agentic FinTech Fraud Analyst",
-      description: "Built a LangGraph multi-agent system deployed on AWS Lambda that autonomously monitors real-time transaction streams, spawns investigative sub-agents for anomaly deep-dives, generates compliance reports, and auto-escalates high-risk cases — reducing false positives by 60% for a digital payments platform.",
-      icon: <TrendingUp className="h-8 w-8 text-emerald-400" />,
-      technologies: ["LangGraph", "LangChain", "AWS Lambda", "Kafka", "PostgreSQL", "Docker", "FastAPI"],
-      features: ["Multi-agent fraud investigation", "Real-time stream analysis", "Autonomous escalation logic", "Compliance report generation", "Agent memory across sessions"],
+      title: "Bison Pay — FinTech Payment Platform",
+      description: "Engineered and launched bison-pay.com, a full-stack digital payments platform with an agentic fraud detection layer built on LangGraph. The platform handles real-time multi-currency transactions, autonomous fraud investigation via sub-agents, compliance reporting, and smart escalation — cutting false positives by 60% and processing thousands of transactions daily.",
+      icon: <CreditCard className="h-8 w-8 text-emerald-400" />,
+      technologies: ["LangGraph", "LangChain", "AWS Lambda", "Kafka", "React", "FastAPI", "PostgreSQL", "Docker", "Stripe API"],
+      features: ["End-to-end payment processing", "Agentic fraud detection engine", "Multi-currency transaction support", "Autonomous compliance reporting", "Real-time smart escalation"],
       gradient: "bg-gradient-accent",
-      category: "FinTech · Agentic AI"
+      category: "FinTech · Live Product",
+      link: "https://bison-pay.com"
+    },
+    {
+      title: "Odoo MCP — AI-Native ERP Integration",
+      description: "Built a Model Context Protocol (MCP) server for Odoo ERP that exposes business data and workflows as structured tool calls consumable by any LLM agent. Enables AI assistants to autonomously query sales orders, invoices, inventory, and CRM records — turning Odoo into a live, agentic business intelligence layer without custom API development per module.",
+      icon: <Plug className="h-8 w-8 text-violet-400" />,
+      technologies: ["MCP Protocol", "LangChain", "LangGraph", "Odoo 17", "Python", "FastAPI", "PostgreSQL", "Docker"],
+      features: ["MCP tool server for Odoo modules", "LLM-native ERP querying", "Sales, CRM & inventory agents", "Autonomous invoice generation", "Zero-code module extension"],
+      gradient: "bg-gradient-neural",
+      category: "ERP · MCP · Agentic AI"
     },
     {
       title: "Clinical Decision Support Agent",
@@ -274,11 +284,23 @@ const Projects = () => {
 
                       {/* Action buttons */}
                       <div className="flex gap-3">
-                        <Button variant="outline" size="sm" className="opacity-70 hover:opacity-100 transition-opacity">
-                          <Github className="h-4 w-4 mr-2" />
-                          Private Repository
-                        </Button>
-                        <Button 
+                          {project.link ? (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="opacity-90 hover:opacity-100 transition-opacity border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                              onClick={() => window.open(project.link, '_blank')}
+                            >
+                              <ExternalLink className="h-4 w-4 mr-2" />
+                              Visit Live Site
+                            </Button>
+                          ) : (
+                            <Button variant="outline" size="sm" className="opacity-70 hover:opacity-100 transition-opacity">
+                              <Github className="h-4 w-4 mr-2" />
+                              Private Repository
+                            </Button>
+                          )}
+                          <Button
                           variant="outline" 
                           size="sm" 
                           className="opacity-70 hover:opacity-100 transition-opacity"
