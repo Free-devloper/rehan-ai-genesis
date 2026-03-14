@@ -28,7 +28,7 @@ const Projects = () => {
       features: ["Live real estate listing retrieval", "Multi-agent property guidance", "Shared conversation memory", "Streaming AI responses", "Fallback LLM support with llama.cpp"],
       gradient: "bg-gradient-accent",
       category: "PropTech · AI Platform",
-      link: "https://https://realstate.roytechworkforce.com/"
+      link: "https://realstate.roytechworkforce.com/"
     },
     {
       title: "Odoo MCP — AI-Native ERP Integration",
