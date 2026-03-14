@@ -1,92 +1,68 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
+
+const navLinks = [
+  { label: 'About', id: 'about' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Contact', id: 'contact' },
+];
+
+const socialLinks = [
+  { icon: <Mail className="h-4 w-4" />, href: 'mailto:rehanghafoor.official@gmail.com', label: 'Email' },
+  { icon: <Github className="h-4 w-4" />, href: 'https://github.com/free-devloper', label: 'GitHub' },
+  { icon: <Linkedin className="h-4 w-4" />, href: 'https://www.linkedin.com/in/rehanroy', label: 'LinkedIn' },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/30 border-t border-border">
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-4xl mx-auto">
-          {/* Main footer content */}
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            {/* Brand */}
-            <div className="text-center md:text-left">
-              <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
-                Muhammad Rehan Ghafoor
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Full Stack AI Engineer & LLM Developer
-              </p>
+    <footer className="border-t border-border">
+      <div className="container mx-auto px-6 py-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            {/* Logo */}
+            <div
+              className="text-lg font-heading font-bold text-gradient cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              RoyTech
             </div>
 
-            {/* Quick links */}
-            <div className="text-center">
-              <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
-              <div className="space-y-2">
-                <button 
-                  onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-muted-foreground hover:text-primary transition-colors text-sm"
+            {/* Nav links */}
+            <nav className="flex items-center gap-6">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  About
+                  {link.label}
                 </button>
-                <button 
-                  onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Skills
-                </button>
-                <button 
-                  onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Projects
-                </button>
-                <button 
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="block mx-auto text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Contact
-                </button>
-              </div>
-            </div>
+              ))}
+            </nav>
 
-            {/* Social links */}
-            <div className="text-center md:text-right">
-              <h3 className="font-semibold text-foreground mb-4">Connect</h3>
-              <div className="flex justify-center md:justify-end space-x-4">
-                <a 
-                  href="mailto:rehanghafoor.official@gmail.com"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="Email"
+            {/* Social */}
+            <div className="flex items-center gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                  aria-label={link.label}
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
                 >
-                  <Mail className="h-5 w-5" />
+                  {link.icon}
                 </a>
-                <a 
-                  href="https://github.com/free-devloper"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github className="h-5 w-5" />
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/rehanroy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </div>
+              ))}
             </div>
           </div>
 
-          {/* Bottom bar */}
-          <div className="border-t border-border pt-8 text-center">
-            <p className="text-muted-foreground text-sm flex items-center justify-center">
-              © {currentYear} Muhammad Rehan Ghafoor
+          {/* Copyright */}
+          <div className="mt-6 pt-6 border-t border-border text-center">
+            <p className="text-xs text-muted-foreground">
+              &copy; {currentYear} Muhammad Rehan Ghafoor. All rights reserved.
             </p>
           </div>
         </div>
