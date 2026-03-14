@@ -40,14 +40,34 @@ const Projects = () => {
       category: "ERP · MCP · Agentic AI"
     },
     {
-      title: "Clinical Decision Support Agent",
-      description: "Developed an agentic clinical assistant using LangGraph + ADKs that autonomously retrieves patient records, cross-references medical literature via RAG, coordinates specialist sub-agents, and generates evidence-backed diagnosis briefs — deployed on AWS ECS with full HIPAA audit trails.",
-      icon: <HeartPulse className="h-8 w-8 text-rose-400" />,
-      technologies: ["LangGraph", "ADKs", "LlamaIndex", "OpenAI", "AWS ECS", "FAISS", "FastAPI", "PostgreSQL"],
-      features: ["Autonomous patient data retrieval", "Medical literature RAG", "Multi-specialist coordination", "Evidence-based diagnosis briefs", "HIPAA-compliant audit logs"],
-      gradient: "bg-gradient-neural",
-      category: "HealthTech · Agentic AI"
-    },
+  title: "Clinical Decision Support Agent",
+  description:
+    "Built a HIPAA-oriented clinical decision support platform with a React clinician app and FastAPI backend, powered by LangGraph workflows that retrieve patient records, route cases to specialist agents, search medical literature through PubMed/OpenSearch RAG, enforce safety checks, support human-in-the-loop review, and generate evidence-backed diagnostic reports with full audit trails.",
+  icon: <HeartPulse className="h-8 w-8 text-rose-400" />,
+  technologies: [
+    "LangGraph",
+    "FastAPI",
+    "React",
+    "PostgreSQL",
+    "OpenSearch",
+    "PubMed",
+    "Amazon Cognito",
+    "AWS ECS Fargate",
+    "Docker",
+    "Terraform"
+  ],
+  features: [
+    "Mock/FHIR-style patient data retrieval",
+    "PubMed + OpenSearch medical literature RAG",
+    "Query routing for specialist agent selection",
+    "Human-in-the-loop clinical review workflow",
+    "Evidence-backed diagnostic reports and reasoning traces",
+    "HIPAA-oriented audit logging and RBAC"
+  ],
+  gradient: "bg-gradient-neural",
+  category: "HealthTech · Agentic AI",
+  link: "https://github.com/Free-devloper/Clinical-Decision-Support-Agent-CDSA-"
+},
     {
       title: "Infrastructure Asset Management Agent",
       description: "Engineered an autonomous AI agent for a civil engineering firm that inspects IoT sensor feeds from bridges and roads, orchestrates maintenance scheduling sub-agents, predicts structural failure windows using ML models on SageMaker, and generates engineer-ready remediation reports.",
