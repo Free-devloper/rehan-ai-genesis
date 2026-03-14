@@ -1,146 +1,138 @@
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Mail, Linkedin, Github, MapPin, Clock, Download, Send, MessageCircle } from 'lucide-react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { Mail, Linkedin, Github, Send, Copy, Check, ExternalLink } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { fadeInUp, fadeInLeft, fadeInRight, staggerContainer, viewportConfig } from '@/lib/animations';
+
+const EMAIL = 'rehanghafoor.official@gmail.com';
+
+const contactLinks = [
+  {
+    icon: <Mail className="h-5 w-5" />,
+    label: 'Email',
+    value: EMAIL,
+    href: `mailto:${EMAIL}?subject=AI Project Inquiry`,
+    external: false,
+  },
+  {
+    icon: <Linkedin className="h-5 w-5" />,
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/rehanroy',
+    href: 'https://www.linkedin.com/in/rehanroy',
+    external: true,
+  },
+  {
+    icon: <Github className="h-5 w-5" />,
+    label: 'GitHub',
+    value: 'github.com/free-devloper',
+    href: 'https://github.com/free-devloper',
+    external: true,
+  },
+];
 
 const Contact = () => {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
-  const { ref: methodsRef, isVisible: methodsVisible } = useScrollAnimation();
-  const { ref: infoRef, isVisible: infoVisible } = useScrollAnimation();
-  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
-  const contactMethods = [
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email",
-      description: "Best for detailed project discussions",
-      value: "rehanghafoor.official@gmail.com",
-      action: "mailto:rehanghafoor.official@gmail.com",
-      gradient: "bg-gradient-primary"
-    },
-    {
-      icon: <Linkedin className="h-6 w-6" />,
-      title: "LinkedIn",
-      description: "Professional networking and updates",
-      value: "linkedin.com/in/rehanroy",
-      action: "https://www.linkedin.com/in/rehanroy",
-      gradient: "bg-gradient-accent"
-    },
-    {
-      icon: <Github className="h-6 w-6" />,
-      title: "GitHub",
-      description: "Code samples and open source work",
-      value: "github.com/free-devloper",
-      action: "https://github.com/free-devloper",
-      gradient: "bg-gradient-secondary"
-    }
-  ];
+  const [copied, setCopied] = useState(false);
 
-  const availability = [
-    {
-      icon: <MapPin className="h-5 w-5 text-primary" />,
-      label: "Location",
-      value: "Available for remote work globally"
-    },
-    {
-      icon: <Clock className="h-5 w-5 text-primary" />,
-      label: "Availability",
-      value: "Open to new opportunities"
-    },
-    {
-      icon: <MessageCircle className="h-5 w-5 text-primary" />,
-      label: "Response Time",
-      value: "Usually within 24 hours"
-    }
-  ];
+  const copyEmail = () => {
+    navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <section id="contact" className="py-24 bg-background overflow-hidden">
+    <section id="contact" className="py-24 sm:py-32 overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          {/* Section header */}
-          <div ref={titleRef} className={`text-center mb-16 transition-all duration-1000 ${titleVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Let's <span className="bg-gradient-primary bg-clip-text text-transparent">Connect</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready to build the future of AI together? I'm always excited to discuss 
-              new projects, opportunities, and innovative ideas.
-            </p>
-          </div>
-
-          {/* Contact methods */}
-          <div ref={methodsRef} className={`grid md:grid-cols-3 gap-6 mb-12 transition-all duration-1000 ${methodsVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
-            {contactMethods.map((method, index) => (
-              <Card 
-                key={index} 
-                className="group hover:shadow-glow transition-all duration-300 border-0 shadow-card cursor-pointer hover-lift"
-                onClick={() => window.open(method.action, '_blank')}
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6 text-center">
-                  <div className={`inline-flex p-3 rounded-full ${method.gradient} text-white mb-4 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow`}>
-                    {method.icon}
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2">{method.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{method.description}</p>
-                  <p className="text-sm font-medium text-primary">{method.value}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Quick info */}
-          <div ref={infoRef} className={`bg-muted/50 rounded-2xl p-8 mb-12 transition-all duration-1000 ${infoVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
-            <h3 className="text-xl font-bold text-center mb-6">Quick Info</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {availability.map((item, index) => (
-                <div key={index} className="flex items-center space-x-3 justify-center md:justify-start hover-lift" style={{ animationDelay: `${index * 0.1}s` }}>
-                  {item.icon}
-                  <div>
-                    <div className="text-sm font-medium text-foreground">{item.label}</div>
-                    <div className="text-sm text-muted-foreground">{item.value}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Call to action */}
-          <div ref={ctaRef} className={`text-center bg-gradient-neural rounded-2xl p-8 text-white relative overflow-hidden transition-all duration-1000 ${ctaVisible ? 'animate-fade-in-up' : 'opacity-0 translate-y-8'}`}>
-            <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4">Ready to Start Your AI Project?</h3>
-              <p className="text-gray-200 mb-6 max-w-2xl mx-auto">
-                Whether you need a full-stack AI application, want to integrate LLM capabilities 
-                into your existing system, or are exploring the possibilities of GenAI, 
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20">
+            {/* Left side */}
+            <motion.div
+              variants={fadeInLeft}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportConfig}
+            >
+              <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Get In Touch</p>
+              <h2 className="text-4xl sm:text-5xl font-heading font-bold tracking-tight mb-6">
+                Let's build something{' '}
+                <span className="text-gradient">extraordinary</span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-md">
+                Whether you need a full-stack AI application, want to integrate LLM capabilities
+                into your existing system, or are exploring the possibilities of GenAI —
                 I'm here to help bring your vision to life.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Button 
-                  variant="glass" 
-                  size="lg"
-                  onClick={() => window.open('mailto:rehanghafoor.official@gmail.com?subject=AI Project Inquiry', '_blank')}
-                  className="group hover-lift"
-                >
-                <Send className="mr-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+
+              {/* Availability status */}
+              <div className="flex items-center gap-3 mb-6">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  Available for new projects &middot; Remote globally &middot; Responds within 24h
+                </span>
+              </div>
+
+              <Button
+                size="lg"
+                className="rounded-full px-8 font-medium group"
+                onClick={() => window.open(`mailto:${EMAIL}?subject=AI Project Inquiry`, '_blank')}
+              >
+                <Send className="mr-2 h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                 Send Me an Email
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = '/RehanAIDeveloper.pdf';
-                  link.download = 'Rehan AI Developer.pdf';
-                  link.click();
-                }}
-                className="border-white/30 text-white hover:bg-white/20 hover-glow"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Download Resume
-              </Button>
+            </motion.div>
+
+            {/* Right side -- contact methods */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportConfig}
+              className="flex flex-col justify-center"
+            >
+              <div className="space-y-4">
+                {contactLinks.map((link) => (
+                  <motion.a
+                    key={link.label}
+                    variants={fadeInRight}
+                    href={link.href}
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
+                    className="group flex items-center gap-4 p-5 rounded-xl border border-border bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-300"
+                  >
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                      {link.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm text-muted-foreground">{link.label}</div>
+                      <div className="text-foreground font-medium truncate">{link.value}</div>
+                    </div>
+                    <ExternalLink className="h-4 w-4 text-muted-foreground/40 group-hover:text-primary transition-colors" />
+                  </motion.a>
+                ))}
               </div>
-            </div>
+
+              {/* Copy email */}
+              <motion.div variants={fadeInRight} className="mt-4">
+                <button
+                  onClick={copyEmail}
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-5 py-2"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-4 w-4 text-green-500" />
+                      <span className="text-green-500">Copied to clipboard!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-4 w-4" />
+                      <span>Copy email address</span>
+                    </>
+                  )}
+                </button>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
