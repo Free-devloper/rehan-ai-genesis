@@ -72,6 +72,7 @@ const projects: Project[] = [
     features: ['Route-aware orchestration across SQL, retrieval, simulation, and graph workflows', 'Deterministic VaR, CVaR, stress, and liquidity risk engine', 'Grounded policy retrieval with evidence-backed synthesis', 'Workflow checkpointing, replay, and audit logging', 'Role-based access control, scheduling, and event-driven alerting'],
     category: 'FinTech · Agentic Risk Systems',
     filterTag: 'FinTech',
+    link: 'https://github.com/Free-devloper/agentic-aortfolio-risk-orchestrator',
     featured: true,
   },
   {
