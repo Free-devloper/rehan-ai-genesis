@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat, Plug, CreditCard } from 'lucide-react';
+import { ExternalLink, House,Github, MessageSquare, Mic, FileText, Calendar, Globe, Shield, Bot, Search, Brain, Cpu, Database, Video, BookOpen, Activity, Building2, TrendingUp, HeartPulse, HardHat, Plug, CreditCard } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Projects = () => {
@@ -19,6 +19,16 @@ const Projects = () => {
       gradient: "bg-gradient-accent",
       category: "FinTech · Live Product",
       link: "https://bison-pay.com"
+    },
+     {
+      title: "RealEstate AI — Agentic Property Discovery Platform",
+      description: "Built and launched an AI-powered real estate platform that combines live property search with multi-agent reasoning. The system uses LangGraph-driven agents to handle buyer guidance, investment analysis, and neighborhood insights, with shared conversation memory, streaming responses, real-time listing retrieval, and local LLM fallback via llama.cpp for resilient agent behavior.",
+      icon: <House className="h-8 w-8 text-emerald-400" />,
+      technologies: ["LangGraph", "LangChain", "Flask", "SQLAlchemy", "JavaScript", "SQLite", "Docker", "Gunicorn", "RentCast API", "llama.cpp"],
+      features: ["Live real estate listing retrieval", "Multi-agent property guidance", "Shared conversation memory", "Streaming AI responses", "Fallback LLM support with llama.cpp"],
+      gradient: "bg-gradient-accent",
+      category: "PropTech · AI Platform",
+      link: "https://https://realstate.roytechworkforce.com/"
     },
     {
       title: "Odoo MCP — AI-Native ERP Integration",
